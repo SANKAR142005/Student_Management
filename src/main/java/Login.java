@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/LogServlet")
-public class Log extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -24,7 +24,7 @@ public class Log extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 		
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_db", "root", "prince@142005");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_db", "root", "prince@142005");
 
 	
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM students_login WHERE studentId=? AND password=?");
@@ -34,7 +34,7 @@ public class Log extends HttpServlet {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				response.sendRedirect("reg.html");
+				response.sendRedirect("Register.html");
 			} else {
 				response.getWriter().println("<h3>Invalid credentials! Try again.</h3>");
 			}

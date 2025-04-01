@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/RegServlet")
-public class Reg extends HttpServlet {
+@WebServlet("/RegisterServlet")
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +29,7 @@ public class Reg extends HttpServlet {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 
 				
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_db", "root", "prince@142005");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/register_db", "root", "prince@142005");
 
 				PreparedStatement ps = con.prepareStatement("INSERT INTO students (name, dob, gender, rollNumber) VALUES (?, ?, ?, ?)");
 				ps.setString(1, name);
